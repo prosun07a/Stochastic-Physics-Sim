@@ -63,7 +63,7 @@ python3 research_report.py
 
 ---
 
-### A Note on Why I Built This
+## A Note on Why I Built This
 As an HSC student in Sylhet, I often find that our physics curriculum is limited to solving equations on paper. I wanted to see if I could "touch" the physics through code'(basically i love to code). This project started when I heard two words Monte Carlo and learned about this Monte Carlo method or simulation then after somedays while learning a topic in my academic physics book suddenly wondered why a random process like decay always results in the same smooth curve. 
 
 I didn't have a formal lab or a CS teacher to guide me, so I treated this project as my own independent "Computational Lab." I used AI as a 24/7 research mentor—not to write the code for me, but to explain complex concepts like **Vectorization** and **Stochastic Sampling** until I could implement them myself on my Linux-Ubuntu computer. Every error I faced, from broken paths to library conflicts, taught me more about the reality of scientific research than a textbook ever could. I built this to prove that with enough curiosity and the right digital tools, a high school student can contribute to the world of computational science.
