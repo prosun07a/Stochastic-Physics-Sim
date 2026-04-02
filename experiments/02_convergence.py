@@ -5,8 +5,9 @@ from analysis.models import run_monte_carlo
 # --- Compare Small vs Large Population ---
 samples = [50, 50000]
 colors = ['orange', 'green']
-TIME = 150
-LAMBDA = 0.03
+TIME = 40
+LAMBDA = 0.1315 
+DT = 0.1
 
 fig, axes = plt.subplots(2, 1, figsize=(10, 10), sharex=True)
 
