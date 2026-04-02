@@ -1,57 +1,47 @@
 import sys
 import os
+from datetime import datetime
+import matplotlib.pyplot as plt
 
+# Path fix to see the analysis folder
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-import matplotlib.pyplot as plt
 from analysis.models import run_monte_carlo, get_analytical_solution
 from analysis.stats import calculate_half_life, get_accuracy
 
+# --- Configuration: Cobalt-60 (Units in Years) ---
+N0 = 50000              # Increased population for higher precision
+LAMBDA = 0.1315         # Scientific constant for Cobalt-60 (per year)
+TIME = 40               # Simulate for 40 years to see multiple half-lives
+DT = 0.1                # Smaller time step for higher resolution
 
-#Configuration of decay 
-N0 = 50000
-LAMBDA = 0.03
-TIME = 150
-
-#Execution 
-t_axis, n_sim = run_monte_carlo(N0, LAMBDA, TIME)
+# --- Execution ---
+t_axis, n_sim = run_monte_carlo(N0, LAMBDA, TIME, dt=DT)
 n_theo = get_analytical_solution(N0, LAMBDA, t_axis)
 
-# Analysis 
+# --- Analysis ---
 t_half_exp = calculate_half_life(t_axis, n_sim)
-t_half_theo = 0.693 / LAMBDA  # Simplified ln(2)/lambda
+t_half_theo = 5.27      # Known scientific value for Co-60
 acc = get_accuracy(t_half_exp, t_half_theo)
 
-#Visualization 
+# --- Visualization ---
 plt.figure(figsize=(10, 6), dpi=100)
-plt.plot(t_axis, n_sim, 'b-', label='Monte Carlo Simulation')
-plt.plot(t_axis, n_theo, 'r--', label='Analytical Theory')
+plt.plot(t_axis, n_sim, 'b-', alpha=0.6, label='Monte Carlo ($^{60}Co$ Simulation)')
+plt.plot(t_axis, n_theo, 'r--', label='Theoretical Decay Law')
 
-plt.title(f"Radioactive Decay Validation (Accuracy: {acc:.2f}%)")
-plt.xlabel("Time (s)")
+plt.title(f"Isotope Research: Cobalt-60 Decay Validation\n(Accuracy: {acc:.2f}%)")
+plt.xlabel("Time (Years)")
 plt.ylabel("Atoms Remaining $N(t)$")
 plt.legend()
 plt.grid(alpha=0.3)
 
-# Save results
-
-import os
-from datetime import datetime
-
-# ... (rest of your existing simulation code) ...
-
-# --- LOGIC: DYNAMIC FILENAME GENERATION ---
-# Creates a unique string based on current date and time
+# --- Save with unique ID ---
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-filename = f"01_validation_N{N0}_{timestamp}.png"
+filename = f"01_Co60_validation_N{N0}_{timestamp}.png"
+plot_path = os.path.join("results", "plots", filename)
 
-# Ensure the directory exists
-plot_dir = os.path.join("results", "plots")
-os.makedirs(plot_dir, exist_ok=True)
-
-# Define the full path
-plot_path = os.path.join(plot_dir, filename)
-
-# Save the plot
+os.makedirs(os.path.dirname(plot_path), exist_ok=True)
 plt.savefig(plot_path)
-print(f"✅ Validation plot saved as: {plot_path}")
+
+print(f"✅ Scientific Validation complete: {plot_path}")
+print(f"📊 Experimental Half-life: {t_half_exp:.2f} years (Theory: 5.27 years)")
