@@ -2,12 +2,12 @@
 **Project Start:** March 26, 2026  
 **Primary Investigator:** Prosun Kanti Datta
 
----
+--------
 
 ### **Day 1: March 26, 2026 - Initial Setup & "The Headless Problem"**
-* **Goal:** Set up a clean Python environment on Ubuntu 24.04 and plot a simple decay curve.
+* **Goal:** Set up a clean Python environment on Ubuntu and plot a simple decay curve.
 * **Problem:** Every time I tried to run `plt.show()`, the terminal crashed with a `Tcl_AsyncDelete` error or a warning about "no display name." 
-* **Solution:** Researched the issue and learned that because I am working in a headless/terminal environment, I cannot "show" windows. Switched the logic to `plt.savefig()` to write files directly to the `/results` folder. This is actually better for reproducibility.
+* **Solution:** Researched the issue and learned that because I am working in a headless/terminal environment, I cannot "show" windows. Switched the logic to `plt.savefig()` and also added`import os ` which specifies the machine to show the windows in this  computer rather than doing the work in void to write files directly to the `/results` folder. This is actually better for reproducibility.
 
 ### **Day 2: March 27, 2026 - Vectorization vs. Loops**
 * **Goal:** Scale the simulation to 10,000 atoms.
@@ -23,3 +23,5 @@
 * **Action:** Created `sensitivity_test.py` to test the effect of population size on model accuracy.
 * **Observation:** The simulation with N=50 showed massive fluctuations (stochastic noise). The N=10,000 run converged almost perfectly with the analytical $e^{-\lambda t}$ curve.
 * **Conclusion:** This confirms that the "smooth" laws of physics we learn in HSC are actually "Emergent Properties" that only appear when you have a large enough sample size.
+
+--------

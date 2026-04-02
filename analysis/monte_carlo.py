@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 
-# --- LOGIC: SETTING THE UNIVERSE 
+# --- LOGIC: SETTING THE UNIVERSE ---
 N_INITIAL = 10000      # Total atoms at t=0
 DECAY_CONSTANT = 0.03  # 3% probability per second
 MAX_TIME = 150         # Duration of experiment in seconds

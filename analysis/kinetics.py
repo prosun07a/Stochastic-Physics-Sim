@@ -2,14 +2,13 @@ import pandas as pd
 import numpy as np
 import os
 
-# --- LOGIC: LOADING THE EXPERIMENT ---
 script_dir = os.path.dirname(os.path.abspath(__file__))
 data_path = os.path.join(script_dir, "..", "data", "decay_simulation_results.csv")
 
-# Load the raw numbers we saved earlier
+# Load the raw numbers 
 df = pd.read_csv(data_path)
 
-# --- LOGIC: EXTRACTING THE HALF-LIFE ---
+# LOGIC: EXTRACTING THE HALF-LIFE 
 initial_pop = df['nuclei_count'].iloc[0]
 target_pop = initial_pop / 2
 
@@ -17,7 +16,7 @@ target_pop = initial_pop / 2
 experimental_row = df[df['nuclei_count'] <= target_pop].iloc[0]
 exp_half_life = experimental_row['time_s']
 
-# --- LOGIC: SCIENTIFIC VALIDATION ---
+# LOGIC: SCIENTIFIC VALIDATION
 lambda_const = 0.03 # Our decay constant
 theo_half_life = np.log(2) / lambda_const
 
