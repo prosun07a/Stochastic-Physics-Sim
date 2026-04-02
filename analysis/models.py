@@ -1,31 +1,30 @@
-import pandas as pd
 import numpy as np
-import os
 
-script_dir = os.path.dirname(os.path.abspath(__file__))
-data_path = os.path.join(script_dir, "..", "data", "decay_simulation_results.csv")
+def run_monte_carlo(n_initial, decay_constant, max_time, dt=1):
+    """
+    Simulates radioactive decay using Monte Carlo methods.
+    Returns: (time_axis, data_results)
+    """
+    current_atoms = n_initial
+    history = []
+    time_axis = np.arange(0, max_time, dt)
 
-# Load the raw numbers 
-df = pd.read_csv(data_path)
+    # Rigorous Probability: P = 1 - exp(-lambda * dt)
+    # This is more accurate than the linear (lambda * dt) approximation
+    p_decay = 1 - np.exp(-decay_constant * dt)
 
-# LOGIC: EXTRACTING THE HALF-LIFE 
-initial_pop = df['nuclei_count'].iloc[0]
-target_pop = initial_pop / 2
+    for t in time_axis:
+        history.append(current_atoms)
+        if current_atoms > 0:
+            # Vectorized NumPy roll for efficiency
+            rolls = np.random.random(current_atoms)
+            decayed = np.sum(rolls < p_decay)
+            current_atoms -= decayed
+        else:
+            current_atoms = 0
 
-# Find the first row where the population is <= half
-experimental_row = df[df['nuclei_count'] <= target_pop].iloc[0]
-exp_half_life = experimental_row['time_s']
+    return time_axis, np.array(history)
 
-# LOGIC: SCIENTIFIC VALIDATION
-lambda_const = 0.03 # Our decay constant
-theo_half_life = np.log(2) / lambda_const
-
-# Calculate the "Residual Error" (The difference)
-error = abs(exp_half_life - theo_half_life)
-accuracy = (1 - (error / theo_half_life)) * 100
-
-print(f"--- KINETICS ANALYSIS REPORT ---")
-print(f"Theoretical Half-Life: {theo_half_life:.2f} s")
-print(f"Experimental Half-Life: {exp_half_life:.2f} s")
-print(f"Simulation Accuracy: {accuracy:.2f}%")
-print(f"--------------------------------")
+def get_analytical_solution(n_initial, decay_constant, time_axis):
+    """Calculates the theoretical N(t) = N0 * exp(-lambda * t)"""
+    return n_initial * np.exp(-decay_constant * time_axis)
