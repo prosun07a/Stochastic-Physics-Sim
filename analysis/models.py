@@ -9,14 +9,14 @@ def run_monte_carlo(n_initial, decay_constant, max_time, dt=1):
     history = []
     time_axis = np.arange(0, max_time, dt)
 
-    # Rigorous Probability: P = 1 - exp(-lambda * dt)
-    # This is more accurate than the linear (lambda * dt) approximation
+# Rigorous Probability: P = 1 - exp(-lambda * dt)
+# This is more accurate than the linear (lambda * dt) approximation
     p_decay = 1 - np.exp(-decay_constant * dt)
 
     for t in time_axis:
         history.append(current_atoms)
         if current_atoms > 0:
-            # Vectorized NumPy roll for efficiency
+# Vectorized NumPy roll for efficiency
             rolls = np.random.random(current_atoms)
             decayed = np.sum(rolls < p_decay)
             current_atoms -= decayed

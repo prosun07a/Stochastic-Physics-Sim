@@ -1,6 +1,6 @@
 import random
 
-atoms = 1000
+atoms = 10000
 decay_chance = 0.03
 for t in range(50):
     decayed_this_turn = 0

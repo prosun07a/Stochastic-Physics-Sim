@@ -3,6 +3,8 @@ import os
 from datetime import datetime
 import matplotlib.pyplot as plt
 
+import pandas as pd
+
 plt.rcParams.update({
     "text.usetex": False, # Set to True if you have LaTeX installed, else it uses 'mathtext'
     "font.family": "serif",
@@ -58,7 +60,29 @@ plt.legend(frameon=False)
 plt.grid(True, linestyle=':', alpha=0.6)
 plt.tight_layout() # Ensures no text is cut off
 
-#File Save 
+import pandas as pd
+
+# --- LOGIC: DATA PERSISTENCE ---
+# 1. Create a clean DataFrame from your simulation results
+df_results = pd.DataFrame({
+    'time_years': t_axis,
+    'nuclei_count': n_sim
+})
+
+timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")  # Define time 
+
+#File Save to results / data
+data_dir = os.path.join("results", "data")
+os.makedirs(data_dir, exist_ok=True) 
+
+csv_filename = f"01_Co60_data_N{N0}_{timestamp}.csv"
+csv_path = os.path.join(data_dir, csv_filename)
+
+df_results.to_csv(csv_path, index=False)
+
+print(f"📊 DATA LOGGED: Raw results saved to {csv_path}")
+
+#File Save to results / plots
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 filename = f"Co60_decay_graph_N{N0}_{timestamp}.png"
 plot_path = os.path.join("results", "plots", filename)
