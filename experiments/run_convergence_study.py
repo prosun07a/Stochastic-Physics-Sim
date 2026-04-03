@@ -8,7 +8,7 @@ import numpy as np
 # Ensures the script can find the 'analysis' folder
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from analysis.models import run_monte_carlo, get_analytical_solution
+from core.analytical_decay_model import run_monte_carlo, get_analytical_solution
 
 # --- 2. PLOT STYLING (Academic Standard) ---
 plt.rcParams.update({
@@ -68,4 +68,4 @@ plot_path = os.path.join("results", "plots", filename)
 os.makedirs(os.path.dirname(plot_path), exist_ok=True)
 plt.savefig(plot_path, dpi=600)
 
-print(f"✅ Convergence study complete: {plot_path}")
+print(f"Convergence study complete: {plot_path}")

@@ -1,4 +1,4 @@
-#--------This a performance benchmark between Loops vs Numpy--------/
+#--------This a performance comparison between Loops vs Numpy--------/
 
 import sys
 import os
@@ -8,7 +8,7 @@ import numpy as np
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 
-from analysis.models import run_monte_carlo
+from core.analytical_decay_model import run_monte_carlo
 
 def legacy_sim_loop(n_initial, decay_constant, max_time):
     """Old style loop-based simulation for comparison"""
@@ -24,7 +24,7 @@ def legacy_sim_loop(n_initial, decay_constant, max_time):
 N_TEST = 100000 
 LAMBDA = 0.1
 
-print(f"🚀 Benchmarking Simulation with N={N_TEST}...")
+print(f" Benchmarking Simulation with N={N_TEST}...")
 
 # Testing Legacy (Loops)
 start = time.time()
@@ -36,6 +36,6 @@ start = time.time()
 run_monte_carlo(N_TEST, LAMBDA, 10)
 end_modern = time.time() - start
 
-print(f"🐢 Legacy Loop Time: {end_legacy:.4f}s")
-print(f"🏎️  Modern NumPy Time: {end_modern:.4f}s")
-print(f"📈 Speedup Factor: {end_legacy / end_modern:.1f}x faster!")
+print(f" Legacy Loop Time: {end_legacy:.4f}s")
+print(f" Modern NumPy Time: {end_modern:.4f}s")
+print(f" Speedup Factor: {end_legacy / end_modern:.1f}x faster!")

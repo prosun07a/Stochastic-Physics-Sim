@@ -19,8 +19,8 @@ plt.rcParams.update({
 # Path fix to see the analysis folder
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from analysis.models import run_monte_carlo, get_analytical_solution
-from analysis.stats import calculate_half_life, get_accuracy
+from core.analytical_decay_model import run_monte_carlo, get_analytical_solution
+from core.half_life_analysis import calculate_half_life, get_accuracy
 
 # --- Configuration: Cobalt-60 (Units in Years) ---
 N0 = 50000              # population / number of atoms 
@@ -80,7 +80,7 @@ csv_path = os.path.join(data_dir, csv_filename)
 
 df_results.to_csv(csv_path, index=False)
 
-print(f"📊 DATA LOGGED: Raw results saved to {csv_path}")
+print(f" DATA LOGGED: Raw results saved to {csv_path}")
 
 #File Save to results / plots
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -90,5 +90,5 @@ plot_path = os.path.join("results", "plots", filename)
 os.makedirs(os.path.dirname(plot_path), exist_ok=True)
 plt.savefig(plot_path, dpi=600, bbox_inches='tight', transparent=False)
 
-print(f"✅ Scientific Validation complete: {plot_path}")
-print(f"📊 Experimental Half-life: {t_half_exp:.2f} years (Theory: 5.2714 years)")
+print(f" Scientific Validation complete: {plot_path}")
+print(f" Experimental Half-life: {t_half_exp:.2f} years (Theory: 5.2714 years)")

@@ -5,7 +5,7 @@
 # # --- LOGIC: SETTING THE UNIVERSE 
 # N_INITIAL = 10000      # Total atoms at t=0
 # DECAY_CONSTANT = 0.03  # 3% probability per second
-# MAX_TIME = 150         # Duration of experiment in seconds
+# TIME = 150         # Duration of experiment in seconds
 
 
 # # --- LOGIC: THE SIMULATION ENGINE ---
@@ -54,20 +54,5 @@
 # plt.grid(alpha=0.3)
 
 # plt.savefig(results_path)
-# print(f"🚀 SUCCESS: Simulation complete. Evidence saved at: {results_path}")
-
-# import pandas as pd
-
-# # --- LOGIC: DATA PERSISTENCE ---
-# # Create a table of the results
-# df = pd.DataFrame({
-#     'time_s': time_axis,
-#     'nuclei_count': data_results
-# })
-
-# # Define the data path
-# data_path = os.path.join(script_dir, "..", "data", "decay_simulation_results.csv")
-
-# # Save to CSV (No index needed)
-# df.to_csv(data_path, index=False)
-# print(f"📊 DATA LOGGED: Raw results saved to {data_path}")
+# print(f" SUCCESS: Simulation complete. Evidence saved at: {results_path}")
+# print(f"DATA LOGGED: Raw results saved to {data_path}")

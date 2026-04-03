@@ -6,7 +6,7 @@ from datetime import datetime
 
 # Path Fix
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from analysis.models import run_monte_carlo
+from core.analytical_decay_model import run_monte_carlo
 
 # --- Configuration: Comparing Isotopes ---
 isotopes = {
@@ -32,4 +32,4 @@ plt.grid(True, linestyle=':', alpha=0.6)
 # Save to results/plots
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 plt.savefig(os.path.join("results", "plots", f"03_parameter_sweep_{timestamp}.png"), dpi=300)
-print("✅ Parameter sweep plot saved to results/plots/")
+print("Parameter sweep plot saved to results/plots/")
