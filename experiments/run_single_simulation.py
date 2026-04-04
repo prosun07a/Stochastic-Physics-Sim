@@ -23,7 +23,7 @@ from core.analytical_decay_model import run_monte_carlo, get_analytical_solution
 from core.half_life_analysis import calculate_half_life, get_accuracy
 
 # --- Configuration: Cobalt-60 (Units in Years) ---
-N0 = 50000              # population / number of atoms 
+N0 = 100              # population / number of atoms 
 LAMBDA = 0.1315         # Scientific constant for Cobalt-60 (per year)
 TIME = 40               # Simulate for 40 years to see multiple half-lives
 DT = 0.1                # Smaller time step for higher resolution
@@ -72,19 +72,19 @@ df_results = pd.DataFrame({
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")  # Define time 
 
 #File Save to results / data
-data_dir = os.path.join("data","raw")
-os.makedirs(data_dir, exist_ok=True) 
+# data_dir = os.path.join("data","raw")
+# os.makedirs(data_dir, exist_ok=True) 
 
-csv_filename = f"Single-sim(Co60)N{N0}_{timestamp}.csv"
-csv_path = os.path.join(data_dir, csv_filename)
+# csv_filename = f"Single-sim(Co60)N{N0}_{timestamp}.csv"
+# csv_path = os.path.join(data_dir, csv_filename)
 
-df_results.to_csv(csv_path, index=False)
+# df_results.to_csv(csv_path, index=False)
 
-print(f" DATA LOGGED: Raw results saved to {csv_path}")
+# print(f" DATA LOGGED: Raw results saved to {csv_path}")
 
 #File Save to results / figures
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-filename = f"Co60_single-sim_N{N0}_{timestamp}.png"
+filename = f"Single-Sim(Co60)-N{N0}_{timestamp}.png"
 plot_path = os.path.join("results", "figures","single-sim", filename)
 
 os.makedirs(os.path.dirname(plot_path), exist_ok=True)

@@ -62,7 +62,7 @@ plt.tight_layout()
 
 #File Save to results / plots
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-filename = f"Convergence_study_{timestamp}.png"
+filename = f"Convergence Study-{timestamp}.png"
 plot_path = os.path.join("results", "figures","convergence-study", filename)
 
 os.makedirs(os.path.dirname(plot_path), exist_ok=True)

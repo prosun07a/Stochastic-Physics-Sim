@@ -4,18 +4,18 @@ import matplotlib.pyplot as plt
 import numpy as np
 from datetime import datetime
 
-# Path Fix
+# Path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from core.analytical_decay_model import run_monte_carlo
 
-# --- Configuration: Comparing Isotopes ---
+# Configuration: Comparing Isotopes ---
 isotopes = {
     "Isotope A (High Decay)": 0.25,
     "Cobalt-60": 0.1315,
     "Isotope C (Stable)": 0.02
 }
-N0 = 10000
-TIME = 50
+N0 = 50000
+TIME = 40
 
 plt.figure(figsize=(10, 6))
 
@@ -31,5 +31,5 @@ plt.grid(True, linestyle=':', alpha=0.6)
 
 # Save to results/plots
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-plt.savefig(os.path.join("results", "figures","decay-const-sweep", f"Decay_Constant_Sweep_{timestamp}.png"), dpi=300)
+plt.savefig(os.path.join("results", "figures","decay-const-sweep", f"Decay Constant Sweep-{N0}_{timestamp}.png"), dpi=300)
 print("Decay Constant Sweep figure saved ")
