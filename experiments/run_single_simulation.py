@@ -72,23 +72,23 @@ df_results = pd.DataFrame({
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")  # Define time 
 
 #File Save to results / data
-data_dir = os.path.join("results", "data")
+data_dir = os.path.join("data","raw")
 os.makedirs(data_dir, exist_ok=True) 
 
-csv_filename = f"01_Co60_data_N{N0}_{timestamp}.csv"
+csv_filename = f"Single-sim(Co60)N{N0}_{timestamp}.csv"
 csv_path = os.path.join(data_dir, csv_filename)
 
 df_results.to_csv(csv_path, index=False)
 
 print(f" DATA LOGGED: Raw results saved to {csv_path}")
 
-#File Save to results / plots
+#File Save to results / figures
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-filename = f"Co60_decay_graph_N{N0}_{timestamp}.png"
-plot_path = os.path.join("results", "plots", filename)
+filename = f"Co60_single-sim_N{N0}_{timestamp}.png"
+plot_path = os.path.join("results", "figures","single-sim", filename)
 
 os.makedirs(os.path.dirname(plot_path), exist_ok=True)
 plt.savefig(plot_path, dpi=600, bbox_inches='tight', transparent=False)
 
 print(f" Scientific Validation complete: {plot_path}")
-print(f" Experimental Half-life: {t_half_exp:.2f} years (Theory: 5.2714 years)")
+print(f" Experimental Half-life: {t_half_exp:.2f} years (Theory: 5.27 years)")

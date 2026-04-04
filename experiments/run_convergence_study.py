@@ -46,7 +46,7 @@ n_theo_norm = np.exp(-LAMBDA * t_theo)
 plt.plot(t_theo, n_theo_norm, 'k--', lw=2, label='Analytical Theory (Limit)', zorder=5)
 
 # --- 5. REFINING THE AESTHETICS ---
-plt.title("Statistical Convergence: From Stochastic Noise to Physical Law", fontweight='bold', pad=20)
+plt.title("Statistical Convergence: From Stochastic Noise to Physical Law [Law of Large numbers]", fontweight='bold', pad=20)
 plt.xlabel("Time (Years)")
 plt.ylabel("Normalized Population $N(t)/N_0$")
 plt.legend(frameon=False, loc='upper right')
@@ -63,7 +63,7 @@ plt.tight_layout()
 #File Save to results / plots
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 filename = f"Convergence_study_{timestamp}.png"
-plot_path = os.path.join("results", "plots", filename)
+plot_path = os.path.join("results", "figures","convergence-study", filename)
 
 os.makedirs(os.path.dirname(plot_path), exist_ok=True)
 plt.savefig(plot_path, dpi=600)

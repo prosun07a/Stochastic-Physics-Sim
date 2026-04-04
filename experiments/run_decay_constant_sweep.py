@@ -31,5 +31,5 @@ plt.grid(True, linestyle=':', alpha=0.6)
 
 # Save to results/plots
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-plt.savefig(os.path.join("results", "plots", f"03_parameter_sweep_{timestamp}.png"), dpi=300)
-print("Parameter sweep plot saved to results/plots/")
+plt.savefig(os.path.join("results", "figures","decay-const-sweep", f"Decay_Constant_Sweep_{timestamp}.png"), dpi=300)
+print("Decay Constant Sweep figure saved ")
