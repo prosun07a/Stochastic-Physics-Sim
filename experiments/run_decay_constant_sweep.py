@@ -29,7 +29,7 @@ plt.ylabel("Remaining Nuclei ($N$)")
 plt.legend(frameon=False)
 plt.grid(True, linestyle=':', alpha=0.6)
 
-# Save to results/plots
+# Save to results/ figures
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 plt.savefig(os.path.join("results", "figures","decay-const-sweep", f"Decay Constant Sweep-{N0}_{timestamp}.png"), dpi=300)
 print("Decay Constant Sweep figure saved ")

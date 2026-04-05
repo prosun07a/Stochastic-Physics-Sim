@@ -1,5 +1,5 @@
 # ⚛️ Stochastic Physics Simulation
-### *What happens when you simulate 50,000 radioactive atoms — one random decision at a time.*
+### *What happens when you simulate 10,000 radioactive atoms — one random decision at a time.*
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue?style=flat-square&logo=python)
 ![Platform](https://img.shields.io/badge/Platform-Ubuntu%2024.04-orange?style=flat-square&logo=ubuntu)
@@ -26,9 +26,9 @@ Each atom gets a random "coin flip" every second. If it lands a certain way, the
 
 The equation I was testing against:
 
-$$N(t) = N_0 \cdot e^{-\lambda t}$$
+$$N(t) = N_0 \cdot e^{λ}$$
 
-$N(t)$ is how many atoms are left at time $t$. $N_0$ is how many you started with. $\lambda$ is the decay constant — it controls how fast they disappear.
+$N(t)$ is how many atoms are left at time $t$. $N_0$ is how many you started with. λ is the decay constant — it controls how fast they disappear.
 
 The simulation doesn't *use* this equation to generate results. It just uses probability. Then we check at the end whether the results match the equation anyway.
 
@@ -38,7 +38,7 @@ They do. That's the point.
 
 ## Results
 
-I ran the main simulation with $N_0 = 10{,}000$ atoms and $\lambda = 0.03$.
+I ran the main simulation with $N_0 = 10000 atoms and λ = 0.03.
 
 | | Theoretical | Simulated |
 |---|---|---|
@@ -88,7 +88,7 @@ Stochastic-Physics-Sim/
 │   ├── experiments.md        # Experiment tracker with parameters and outcomes
 │   └── research_notes.md     # Open questions, limitations, technical notes
 │
-├── research_report.py    # Runs the full pipeline end-to-end
+├── research_report.py    # Runs the full pipeline end-to-end (all in one)
 ├── requirements.txt
 └── README.md
 ```
@@ -180,9 +180,10 @@ This project started the way most of mine do — I was studying something for an
 
 So I spent a few weeks building this. I ran into the usual problems — broken file paths, a matplotlib error I wasted an embarrassing amount of time on, virtual environment confusion, not knowing how to structure a project bigger than two files. None of that was in the textbook either.
 
-But that is exactly the kind of thing you only learn by doing it wrong first.
 
-I'm not sharing this because I think it's groundbreaking research. I'm sharing it because I believe students in places like Bangladesh — without labs, without mentors, without resources — can still build things that are scientifically honest and worth taking seriously. You don't need a university affiliation to care about doing good work.
+But also that is exactly the kind of thing you only learn by doing it wrong first. 
+
+I'm not sharing this because I think it's groundbreaking research. I'm sharing it because I believe students in places like Bangladesh — without labs, without mentors, without resources — can still build things that are scientifically honest and worth taking seriously. You don't need a university affiliation to care about doing good work. In this era you just need a good knowledge of using AI and different resources from the Internet. But learning, understanding and implementing is the most.
 
 This is me caring about doing good work.
 
