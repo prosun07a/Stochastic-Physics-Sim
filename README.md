@@ -38,7 +38,7 @@ They do. That's the point.
 
 ## Results
 
-I ran the main simulation with N_0 = 10000 atoms and λ = 0.03
+I ran the main simulation with $N_0$ = 10000 atoms and λ = 0.03
 
 | | Theoretical | Simulated |
 |---|---|---|
